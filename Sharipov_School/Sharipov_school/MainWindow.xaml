@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sharipov_school"
         mc:Ignorable="d"
-        Title="Sharipov_school" Height="450" Width="800" MinHeight="450" MinWidth="800">
+        Title="Sharipov_school" Height="450" Width="800" MinHeight="450" MinWidth="800" FontFamily="Comic Sans MS">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" Background="#FDE7FABF" >                
+            <Image Source="Resources/school_logo.png" HorizontalAlignment="Left" Width="80" Height="80" Margin="5, 0, 0, 0"></Image>
+            <TextBlock Text="Языковая школа" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="10, 0, 10, 0"></TextBlock>
+            <Button Name="BackBT" Content="Назад" Click="BackBT_Click" Visibility="Visible" HorizontalAlignment="Right"></Button>
+        </Grid>
+        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
     </Grid>
 </Window>

@@ -23,6 +23,26 @@ namespace Sharipov_school
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new ClientPage());
+            MainClass.MainFrame = MainFrame;
+            
+        }
+
+        private void BackBT_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+            {
+                BackBT.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BackBT.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

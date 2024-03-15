@@ -6,9 +6,92 @@
       xmlns:local="clr-namespace:Sharipov_school"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ClientPage">
-
+      Title="ClientPage" FontFamily="Comic Sans MS">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <TextBox Name="SearchTB" Width="220" Margin="5" Height="25" TextChanged="SearchTB_TextChanged"></TextBox>
+            <ComboBox Name="FilterCB" Width="220" Margin="5" Height="25" SelectionChanged="FilterCB_SelectionChanged" SelectedIndex="0">
+                <ComboBoxItem Content="Все"></ComboBoxItem>
+                <ComboBoxItem Content="Мужчины"></ComboBoxItem>
+                <ComboBoxItem Content="Женщины"></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <Grid Grid.Column="2" Margin="5, 0, 5,  0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Сортировка:" Grid.Row="0"></TextBlock>
+            <RadioButton x:Name="FirstNameRB" Content="Фамилия (в алфавитном порядке)" Checked="FirstNameRB_Checked" Grid.Row="1"></RadioButton>
+            <RadioButton x:Name="DateRB" Content="Дата последнего посещения (от старых к новым)" Checked="DateRB_Checked" Grid.Row="2"></RadioButton>
+            <RadioButton x:Name="CountRB" Content="Количество посещений (от большего к меньшему)" Checked="CountRB_Checked" Grid.Row="3"></RadioButton>
+        </Grid>
+        <ListView Grid.Row="1" Grid.ColumnSpan="4" Name="ClientLV" HorizontalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Column="0" Grid.RowSpan="6" Width="150" Height="150">
+                            <Image.Source>
+                                <Binding Path="PhotoPath">
+                                    <Binding.TargetNullValue>
+                                        Resources/people.png
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text="{Binding LastName}"  Margin="5, 0, 0, 0"></TextBlock>
+                            <TextBlock Text="{Binding Patronymic}" Margin="5, 0, 0, 0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                            <TextBlock Text="Пол: "></TextBlock>
+                            <TextBlock Text="{Binding GenderCode}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                            <TextBlock Text="Номер телефона: "></TextBlock>
+                            <TextBlock Text="{Binding Phone}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+                            <TextBlock Text="Email: "></TextBlock>
+                            <TextBlock Text="{Binding Email}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                            <TextBlock Text="День рождения: "></TextBlock>
+                            <TextBlock Text="{Binding Birthday}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5">
+                            <TextBlock Text="Дата регестрации: "></TextBlock>
+                            <TextBlock Text="{Binding RegistrationDate}"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
