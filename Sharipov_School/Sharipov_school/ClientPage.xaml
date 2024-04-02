@@ -18,7 +18,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Visibility="Collapsed">
             <TextBox Name="SearchTB" Width="220" Margin="5" Height="25" TextChanged="SearchTB_TextChanged"></TextBox>
             <ComboBox Name="FilterCB" Width="220" Margin="5" Height="25" SelectionChanged="FilterCB_SelectionChanged" SelectedIndex="0">
                 <ComboBoxItem Content="Все"></ComboBoxItem>
@@ -26,7 +26,7 @@
                 <ComboBoxItem Content="Женщины"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <Grid Grid.Column="2" Margin="5, 0, 5,  0">
+        <Grid Grid.Column="2" Margin="5, 0, 5,  0" Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -65,29 +65,34 @@
                             </Image.Source>
                         </Image>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
-                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text="{Binding ID, StringFormat=ID: {0}}" TextWrapping="Wrap"></TextBlock>
+                            <TextBlock Text="{Binding FirstName}"  Margin="5, 0, 0, 0"></TextBlock>
                             <TextBlock Text="{Binding LastName}"  Margin="5, 0, 0, 0"></TextBlock>
                             <TextBlock Text="{Binding Patronymic}" Margin="5, 0, 0, 0"></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
                             <TextBlock Text="Пол: "></TextBlock>
-                            <TextBlock Text="{Binding GenderCode}"></TextBlock>
+                            <TextBlock Text="{Binding GenderToString}"></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
                             <TextBlock Text="Номер телефона: "></TextBlock>
                             <TextBlock Text="{Binding Phone}"></TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
                             <TextBlock Text="Email: "></TextBlock>
                             <TextBlock Text="{Binding Email}"></TextBlock>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
                             <TextBlock Text="День рождения: "></TextBlock>
                             <TextBlock Text="{Binding Birthday}"></TextBlock>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5">
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
                             <TextBlock Text="Дата регестрации: "></TextBlock>
                             <TextBlock Text="{Binding RegistrationDate}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5">
+                            <TextBlock Text="Дата последнего посещения: "></TextBlock>
+                            <TextBlock Text="{Binding Date}"></TextBlock>
+                            <TextBlock Text="  Кол-во посещений: "></TextBlock>
+                            <TextBlock Text="{Binding PosCount}"></TextBlock>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

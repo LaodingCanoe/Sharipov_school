@@ -52,19 +52,34 @@ namespace Sharipov_school
             }
         }
 
-        public DateTime Date
+        public string Date
         {
             get
             {
                 DateTime date = new DateTime();
-                foreach(ClientService clientservice in this.ClientServices)
+                DateTime d2 = new DateTime(0001, 01, 01, 12, 00, 00);
+                foreach (ClientService clientservice in this.ClientServices)
                 {
                     if(date < clientservice.StartTime)
                     {
                         date = clientservice.StartTime; 
                     }
                 }
-                return date;
+                if(PosCount == 0)
+                {
+                    return "Нет";
+                }
+                else
+                {
+                    return date.ToString();
+                }
+            }
+        }
+        public string GenderToString
+        {
+            get
+            {
+                return Gender.Name;
             }
         }
     }
